@@ -14,7 +14,7 @@ export const SiteComponent: React.FC<Site> = (site) => {
   }
 
   return (
-    <div className="p-1 border-2 rounded-sm border-gray-600">
+    <div className="p-1 border-2 rounded border-gray-600">
       <div
         className="flex items-center gap-2"
         onClick={handleChangeSite}

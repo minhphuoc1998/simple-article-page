@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { Pagination } from './base';
+import { Pagination } from './base'
+import { httpClient } from './client'
 
 export interface TaskSearchParams {
   root?: boolean
@@ -23,7 +23,6 @@ export interface TaskDetail {
 }
 
 export const getTaskList = async (params?: TaskSearchParams): Promise<Pagination<TaskDetail>> => {
-  const res = await axios.get(process.env.NEXT_PUBLIC_ENDPOINT + "/task", { params })
-  const { data } = res
+  const { data } = await httpClient.get("/task", { params })
   return data
 }

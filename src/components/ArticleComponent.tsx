@@ -2,7 +2,7 @@ import { Article } from "@/api/article";
 
 export const ArticleComponent: React.FC<Article> = (article) => {
   return (
-    <article key={article.id} className="flex flex-col w-full gap-5 p-2 border-2 rounded-sm border-gray-600 md:flex-row items-center">
+    <article key={article.id} className="flex flex-col w-full gap-5 p-2 border-2 rounded border-gray-600 md:flex-row items-center">
       <div className="w-96 min-w-96">
         <img
           src={article.thumbnail!}

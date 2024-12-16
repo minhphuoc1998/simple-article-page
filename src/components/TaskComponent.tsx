@@ -77,7 +77,7 @@ const StatusComponent: React.FC<{ status: string, count?: number, custom?: strin
   const textColor = TEXT_COLOR[status as keyof typeof TEXT_COLOR] || ""
   const borderColor = BORDER_COLOR[status as keyof typeof BORDER_COLOR] || ""
   return (
-    <div className={`flex w-32 justify-between gap-2 px-1 border-2 rounded-sm ${textColor} ${borderColor}`}>
+    <div className={`flex w-32 justify-between gap-2 px-1 border-2 rounded ${textColor} ${borderColor}`}>
       <p className="w-20 max-w-20">{status}</p>
       {typeof count === "number" && <p className="">{count}</p>}
     </div>

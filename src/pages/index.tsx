@@ -53,7 +53,7 @@ export default function Home() {
       <div className="flex flex-col gap-3">
         {articles.map((article) => (<ArticleComponent {...article} />))}
       </div>
-      <button onClick={handleNextPage} className="p-2 px-4 bg-gray-700 text-white rounded">
+      <button onClick={handleNextPage} className="p-2 px-4 bg-gray-600 text-white rounded">
         Next Page
       </button>
     </div>

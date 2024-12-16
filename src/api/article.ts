@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { httpClient } from './client'
 
 export interface ArticleSearchParams {
   origin?: string
@@ -18,7 +18,6 @@ export interface Article {
 }
 
 export const getArticleList = async (params?: ArticleSearchParams): Promise<Article[]> => {
-  const res = await axios.get(process.env.NEXT_PUBLIC_ENDPOINT + "/article", { params })
-  const { data } = res
+  const { data } = await httpClient.get("/article", { params })
   return data
 }
