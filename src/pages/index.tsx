@@ -20,7 +20,6 @@ export default function Home() {
       ascending: ascending ? ascending === 'true' : undefined
     }
     const data = await getArticleList(params);
-    console.log(data);
     setArticles(data);
   }
 
