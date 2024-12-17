@@ -1,26 +1,24 @@
 import { getTaskList, TaskDetail } from "@/api/task"
-import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 
 export const TaskComponent: React.FC<TaskDetail> = (task) => {
-  const router = useRouter()
   const [currentPage, setCurrentPage] = useState<number>(0)
   const [totalPage, setTotalPage] = useState<number>(0)
   const [showChildren, setShowChildren] = useState<boolean>(false)
   const [children, setChildren] = useState<TaskDetail[]>([])
 
-  const handleAddChild = async () => {
+  const handleAddChild = async (currPage: number) => {
     try {
-      const data = await getTaskList({ parentTaskId: task.id, page: currentPage })
+      const data = await getTaskList({ parentTaskId: task.id, page: currPage })
       setChildren(data?.items || [])
       setTotalPage(data?.totalPages || 1)
     } catch (error) {
-      
+      console.error(error)
     }
   }
 
   useEffect(() => {
-    handleAddChild()
+    handleAddChild(currentPage)
   }, [currentPage])
 
   const borderColor = BORDER_COLOR[task.status as keyof typeof BORDER_COLOR] || ""
@@ -50,7 +48,7 @@ export const TaskComponent: React.FC<TaskDetail> = (task) => {
         </div>
       )}
       {(showChildren && children.length > 0) && children.map((child) => (
-        <TaskComponent {...child} />
+        <TaskComponent key={child.id} {...child} />
       ))}
     </div>
   )
@@ -79,7 +77,7 @@ const FieldComponent: React.FC<{ label: string, value: string, custom?: string }
   )
 }
 
-const StatusComponent: React.FC<{ status: string, count?: number, custom?: string }> = ({ status, count, custom }) => {
+const StatusComponent: React.FC<{ status: string, count?: number, custom?: string }> = ({ status, count }) => {
   const textColor = TEXT_COLOR[status as keyof typeof TEXT_COLOR] || ""
   const borderColor = BORDER_COLOR[status as keyof typeof BORDER_COLOR] || ""
   return (

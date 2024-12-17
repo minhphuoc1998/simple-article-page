@@ -48,10 +48,10 @@ export default function Home() {
     <div className="flex flex-col m-10 gap-5 items-center">
       <h1></h1>
       <div className="flex gap-10">
-        {sites.map((site) => (<SiteComponent {...site} />))}
+        {sites.map((site) => (<SiteComponent key={site.id} {...site} />))}
       </div>
       <div className="flex flex-col gap-3">
-        {articles.map((article) => (<ArticleComponent {...article} />))}
+        {articles.map((article) => (<ArticleComponent key={article.id} {...article} />))}
       </div>
       <button onClick={handleNextPage} className="p-2 px-4 bg-gray-600 text-white rounded">
         Next Page

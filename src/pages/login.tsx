@@ -14,6 +14,7 @@ export default function Login() {
       localStorage.setItem('auth', JSON.stringify({ token }))
       router.push('/task-management')
     } catch (err) {
+      console.error(err)
       setError('Login failed')
     }
   }

@@ -7,20 +7,20 @@ export default function TaskManagement() {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [totalPages, setTotalPages] = useState<number>(1)
   
-  const handleFetch = async () => {
+  const handleFetch = async (currentPage: number) => {
     const data = await getTaskList({ root: true, page: currentPage })
     setTasks(data?.items || [])
     setTotalPages(data?.totalPages || 1)
   }
 
   useEffect(() => {
-    handleFetch()
+    handleFetch(currentPage)
   }, [currentPage])
 
   return (
     <div className="flex flex-col items-center p-8">
       <h1 className="text-2xl font-extrabold text-gray-900">Task Status</h1>
-      {tasks.map((task) => <TaskComponent {...task} />)}
+      {tasks.map((task) => <TaskComponent key={task.id} {...task} />)}
       <div className="text-gray-600">
         {currentPage > 1 && <button onClick={() => setCurrentPage(currentPage - 1)}>{"<"}</button>}
         <p>{currentPage}/{totalPages}</p>

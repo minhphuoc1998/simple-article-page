@@ -7,6 +7,7 @@ export const ArticleComponent: React.FC<Article> = (article) => {
         <img
           src={article.thumbnail!}
           className="w-96 object-cover"
+          alt={article.title}
         />
       </div>
       <div className="flex flex-col gap-2">

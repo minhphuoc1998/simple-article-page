@@ -14,7 +14,7 @@ export const SiteComponent: React.FC<Site> = (site) => {
   }
 
   return (
-    <div className="p-1 border-2 rounded border-gray-600">
+    <div key={site.id} className="p-1 border-2 rounded border-gray-600">
       <div
         className="flex items-center gap-2"
         onClick={handleChangeSite}
@@ -23,6 +23,7 @@ export const SiteComponent: React.FC<Site> = (site) => {
           <img
             src={site.logo!}
             className="w-10 object-cover"
+            alt={site.siteName}
           />
         </div>
         <div className="">
