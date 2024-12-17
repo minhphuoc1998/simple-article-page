@@ -59,14 +59,14 @@ export const TaskComponent: React.FC<TaskDetail> = (task) => {
 const BORDER_COLOR = {
   "PENDING": "border-yellow-500",
   "RUNNING": "border-blue-500",
-  "SUCCESS": "border-green-500",
+  "SUCCESS": "border-green-800",
   "ERROR": "border-red-500"
 }
 
 const TEXT_COLOR = {
   "PENDING": "text-yellow-500",
   "RUNNING": "text-blue-500",
-  "SUCCESS": "text-green-500",
+  "SUCCESS": "text-green-800",
   "ERROR": "text-red-500"
 }
 
