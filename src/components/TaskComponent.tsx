@@ -1,16 +1,22 @@
 import { getTaskList, TaskDetail } from "@/api/task"
+import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 
 export const TaskComponent: React.FC<TaskDetail> = (task) => {
+  const router = useRouter()
   const [currentPage, setCurrentPage] = useState<number>(0)
   const [totalPage, setTotalPage] = useState<number>(0)
   const [showChildren, setShowChildren] = useState<boolean>(false)
   const [children, setChildren] = useState<TaskDetail[]>([])
 
   const handleAddChild = async () => {
-    const data = await getTaskList({ parentTaskId: task.id, page: currentPage })
-    setChildren(data?.items || [])
-    setTotalPage(data?.totalPages || 1)
+    try {
+      const data = await getTaskList({ parentTaskId: task.id, page: currentPage })
+      setChildren(data?.items || [])
+      setTotalPage(data?.totalPages || 1)
+    } catch (error) {
+      
+    }
   }
 
   useEffect(() => {
