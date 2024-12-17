@@ -18,7 +18,4 @@ jobs:
         username: ubuntu
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          sudo -i <<EOF
-          cd /home/ubuntu
-          bash deploy.sh
-          EOF
+          sudo -i sh -c 'cd /home/ubuntu && bash deploy.sh'
